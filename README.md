@@ -1,1 +1,1 @@
-# prostate-cancer-predictor
+# Pneumonia Predictor

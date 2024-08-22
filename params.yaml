@@ -1,0 +1,7 @@
+container:
+  #connect_str: Add Connection String
+  #container_name: Add Container Name
+data_dir:
+  artifacts: artifacts
+  raw_zip_data: artifacts/raw_zip_data/pneumonia-archive.zip
+  raw_data: artifacts/raw_data
