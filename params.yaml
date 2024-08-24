@@ -1,6 +1,12 @@
 container:
-  #connect_str: Add Connection String
-  #container_name: Add Container Name
+  #connect_str: 
+  #container_name: 
+sql:
+  #server: 
+  #driver: 
+  #username: 
+  #password: 
+  #database: 
 data_dir:
   artifacts: artifacts
   raw_zip_data: artifacts/raw_zip_data/pneumonia-archive.zip
