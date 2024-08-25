@@ -1,7 +1,19 @@
 import yaml
 import os
 import zipfile
+import logging
 
+class CustomHandler(logging.Handler):
+    def __init__(self, cursor, conn):
+        logging.Handler.__init__(self)
+        self.cursor = cursor
+        self.conn = conn
+
+    def emit(self, record):
+        sql = "INSERT INTO test_logs (LevelName, Message, DateCreated) VALUES (?, ?, GetDate())"
+        self.cursor.execute(sql, (record.levelname, record.msg))
+        self.conn.commit()
+        
 def clean_dir(dir_path:str)-> None:
     #Removes all the files in a directory. 
     if len(os.listdir(dir_path)) == 0:

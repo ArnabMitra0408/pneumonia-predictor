@@ -1,7 +1,12 @@
 container:
-  #connect_str: 
-  #container_name: 
+  # connect_str: 
+  # container_name: 
 data_dir:
   artifacts: artifacts
   raw_data: artifacts/raw_data
   raw_zip_data: artifacts/raw_zip_data/pneumonia_data.zip
+sql:
+  # server: 
+  # username: 
+  # password: 
+  # database: 

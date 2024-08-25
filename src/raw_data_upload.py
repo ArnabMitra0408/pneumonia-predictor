@@ -2,7 +2,9 @@ import os
 from azure.storage.blob import BlobServiceClient
 from argparse import ArgumentParser
 from utils.common_utils import unzip_file,read_params
+from utils.sql_connection import logs
 
+logger = logs()
 def data_upload(container_client, local_folder,raw_data,raw_zip_data):
 
     unzip_file(raw_zip_data,raw_data)
@@ -12,6 +14,7 @@ def data_upload(container_client, local_folder,raw_data,raw_zip_data):
         container_client.create_container()
     except Exception as e:
         print(f"Container already exists: {e}")
+        logger.info(f"Container already exists: {e}")
         # Empty the container to remove the existing data
         # overwrite = True is done 
 
@@ -22,6 +25,7 @@ def data_upload(container_client, local_folder,raw_data,raw_zip_data):
             blob_path = relative_path.replace("\\", "/")
 
             print(f"Uploading {local_file_path} to {blob_path}...")
+            logger.info(f"Uploading {local_file_path} to {blob_path}...")
 
             blob_client = container_client.get_blob_client(blob_path)
             with open(local_file_path, "rb") as data:
@@ -31,7 +35,7 @@ if __name__ == '__main__':
     # for yaml file 
     args = ArgumentParser()
     args.add_argument("--config_path", "-c", default='params.yaml') 
-    parsed_args = args.parse_args() # read the values of parameter/arguments passed in above line
+    parsed_args = args.parse_args() # read the values of parameter/arguments passed in above line which is default or give in terminal
     configs = read_params(parsed_args.config_path) # read yaml file
 
     connect_str = configs['container']['connect_str']
