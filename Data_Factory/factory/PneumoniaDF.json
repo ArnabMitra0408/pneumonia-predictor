@@ -1,0 +1,9 @@
+{
+	"name": "PneumoniaDF",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "0057530d-d269-49d4-9a19-c224e607131d",
+		"tenantId": "41f88ecb-ca63-404d-97dd-ab0a169fd138"
+	}
+}
